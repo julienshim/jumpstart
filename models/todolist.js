@@ -1,7 +1,22 @@
 module.exports = function(sequelize, DataTypes) {
     var Todolist = sequelize.define("Todolist", {
-        // This is just a container of todolists, so doesn't need properties.
-        // Just the ID that's automatically generated.
+        // id: {
+        //     type: DataTypes.INTEGER,
+        //     primaryKey: true,
+        //     autoIncrement: true,
+        //     unique: true,
+        //     field: 'id',
+        //   },
+        
+        createdAt: {
+            type: DataTypes.DATE,
+            defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
+          },
+          
+        updatedAt: {
+            type: DataTypes.DATE,
+            defaultValue: sequelize.literal('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'),
+          }
     });
 
     Todolist.associate = function(models) {

@@ -7,7 +7,7 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false,
             validate: {
                 len: [1]
-            },
+                }
             },
 
         position: {
@@ -15,7 +15,7 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false,
             validate: {
                 len: [1]
-            }
+                }
             },
 
         leadLink: {
@@ -24,7 +24,7 @@ module.exports = function(sequelize, DataTypes) {
             validate: {
                 isUrl: true,
                 len: [1]
-            }
+                }
             },
 
         dateApplied: {
@@ -33,7 +33,7 @@ module.exports = function(sequelize, DataTypes) {
             validate: {
                 isEmail: true,
                 len: [1]
-            }
+                }
             },
 
         documents: {
@@ -42,7 +42,7 @@ module.exports = function(sequelize, DataTypes) {
             validate: {
                 isUrl: true, // If multiple documents, then they should link to their folder.
                 len: [1]
-            }
+                }
             },
 
         notes: {
@@ -51,7 +51,7 @@ module.exports = function(sequelize, DataTypes) {
             validate: {
                 isEmail: true,
                 len: [1]
-            }
+                }
             }
 
         });
