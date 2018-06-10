@@ -22,13 +22,13 @@ module.exports = function(sequelize, DataTypes) {
 
         });
 
-        // User.associate = function(models) {
+        User.associate = function(models) {
 
-        //     User.hasMany(models.Lead, {
-        //         onDelete: "cascade"
-        //     });
+            User.hasMany(models.Lead, {
+                onDelete: "cascade"
+            });
 
-        // };
+        };
 
     return User;
 };

@@ -4,17 +4,19 @@ module.exports = function(sequelize, DataTypes) {
         // Just the ID that's automatically generated.
     });
 
-    // Todolist.associate = function(models) {
+    Todolist.associate = function(models) {
 
-    //     Todolist.hasMany(models.Todo, {
-    //         onDelete: "cascade"
-    //     });
+        Todolist.hasMany(models.Todo, {
+            onDelete: "cascade"
+        });
 
-    //     Todolist.belongsTo(models.Lead, {
-    //         onDelete: "cascade"
-    //     });
+        Todolist.belongsTo(models.Lead, {
+            foreignKey: {
+                allowNull: false
+            }
+        });
 
-    // };
+    };
 
     return Todolist;
   };
