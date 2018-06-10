@@ -56,17 +56,19 @@ module.exports = function(sequelize, DataTypes) {
 
         });
 
-        // Lead.associate = function(models) {
+        Lead.associate = function(models) {
 
-        //     Lead.hasOne(models.Todolist, {
-        //         onDelete: "cascade"
-        //     });
+            Lead.hasOne(models.Todolist, {
+                onDelete: "cascade"
+            });
 
-        //     Lead.belongsTo(models.Todolist, {
-        //         onDelete: "cascade"
-        //     });
+            Lead.belongsTo(models.User, {
+                foreignKey: {
+                    allowNull: false
+                }
+            });
 
-        // };
+        };
 
     return Lead;
 };

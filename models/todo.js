@@ -18,13 +18,15 @@ module.exports = function(sequelize, DataTypes) {
 
     });
 
-    // Todo.associate = function(models) {
+    Todo.associate = function(models) {
 
-    //     Todo.belongsTo(models.Todolist, {
-    //         onDelete: "cascade"
-    //     });
+        Todo.belongsTo(models.Todolist, {
+            foreignKey: {
+                allowNull: false
+            }
+        });
 
-    // };
+    };
 
     return Todo;
   };
