@@ -11,7 +11,11 @@
 * npm install sequelize
 * npm install sequelize-cli
 
-2) Update the `config/config.json` file's development object with your own local MYSQL database settings.
+2) Create a `.env` file in the root directory of the project, then update it with your local MySQL instance connection information and credentials.  The file should look something like this:<pre># Local creds
+DB_USERNAME=root
+DB_PASSWORD=[replace this with your MySQL server password, being sure to delete the brackets]
+DB_NAME=jumpstart_db
+DB_HOSTNAME=127.0.0.1</pre>
 
 3) Make sure to run the code contained within the `db/jumpstarter-schema.sql` files beforehand so that you have a database with which to work.
 
