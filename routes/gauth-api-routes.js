@@ -1,3 +1,5 @@
+var db = require("../models");
+
 module.exports = function(app) {
 
     const {OAuth2Client} = require('google-auth-library');
@@ -17,12 +19,33 @@ module.exports = function(app) {
             });
             const payload = ticket.getPayload();
             const userid = payload['sub'];
+            const userMail = payload['email'];
+            const userName = userMail.split("@")[0]
             // If request specified a G Suite domain:
             //const domain = payload['hd'];
 
             // print userid to console
             console.log("userid is...");
             console.log(userid);
+
+            db.User.findOne({
+                where: {
+                  user_name: userName
+                }
+            }).then(function(dbUser) {
+                console.log(dbUser);
+                if (!dbUser) {
+                    db.User.create({
+                        user_name: userName,
+                        email: userMail
+                    }).then(function(dbUser) {
+                        res.json(dbUser);
+                    });
+                }
+                else {
+                    res.json(dbUser);
+                }
+            });
         }
         verify().catch(console.error);
     });
