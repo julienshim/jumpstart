@@ -14,6 +14,7 @@ require("./routes/html-api-routes.js")(app);
 require("./routes/lead-api-routes.js")(app);
 require("./routes/todo-api-routes.js")(app);
 require("./routes/user-api-routes.js")(app);
+require("./routes/gauth-api-routes.js")(app);
 
 // { force: true } inside sync() if you want to rebuilding database/tables for testing.
 
