@@ -33,6 +33,15 @@ module.exports = function(app) {
 
             // perform appropriate db lookups after user authentication
             if (userName) {
+                // check for LocalStorage/SessionStorage
+                if (typeof(Storage) !== "undefined") {
+                    // store userName
+                    localStorage.setItem("user_name", userName);
+                } else {
+                    // someone is using a very old browser.  they have been bad and should feel bad
+                    console.log("update your old browser")
+                }
+
                 // see if the user already exists in our user table
                 db.User.findOne({
                     where: {
