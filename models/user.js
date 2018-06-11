@@ -8,7 +8,7 @@ module.exports = function(sequelize, DataTypes) {
             validate: {
                 is: ["^[a-z]+$",'i'],
                 len: [1]
-            }
+                }
             },
 
         email: {
@@ -17,7 +17,7 @@ module.exports = function(sequelize, DataTypes) {
             validate: {
                 isEmail: true,
                 len: [1]
-            }
+                }
             }
 
         });
@@ -32,11 +32,3 @@ module.exports = function(sequelize, DataTypes) {
 
     return User;
 };
-  
-
-
-
-
-
-
-

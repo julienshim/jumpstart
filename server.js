@@ -12,9 +12,12 @@ app.use(express.static("public"));
 app.set("view engine", "ejs");
 
 require("./routes/html-api-routes.js")(app);
-// require("./routes/lead-api-routes.js")(app);
-// require("./routes/todo-api-routes.js")(app);
-// require("./routes/user-api-routes.js")(app);
+require("./routes/lead-api-routes.js")(app);
+require("./routes/todo-api-routes.js")(app);
+require("./routes/user-api-routes.js")(app);
+require("./routes/gauth-api-routes.js")(app);
+
+// { force: true } inside sync() if you want to rebuilding database/tables for testing.
 
 db.sequelize.sync().then(function() {
   app.listen(PORT, function() {
