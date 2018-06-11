@@ -6,7 +6,16 @@ module.exports = function(app) {
   
     // index route loads view.html
     app.get("/", function(req, res) {
-      res.send("This is root.");
+      var hello = "Welcome to our site!"
+      var array = [
+        {userName: 'Taharka'},
+        {userName: 'Dayan'}
+      ]
+      res.render("pages/index",
+        {hello: hello,
+         array: array
+        }
+    );
     });
   
     // cms route loads cms.html
