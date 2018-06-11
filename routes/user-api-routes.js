@@ -18,15 +18,14 @@ module.exports = function(app) {
     db.User.findOne({
       where: {
         id: req.params.id
-      },
-      include: [db.Lead]
+      }
     }).then(function(dbUser) {
       res.json(dbUser);
     });
   });
 
   //Postman
-  // localhost:333/api/users/1
+  // localhost:3333/api/users/1
 
   app.post("/api/users", function(req, res) {
     console.log(req.body);
