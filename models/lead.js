@@ -7,7 +7,7 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false,
             validate: {
                 len: [1]
-            },
+                }
             },
 
         position: {
@@ -15,7 +15,7 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false,
             validate: {
                 len: [1]
-            }
+                }
             },
 
         leadLink: {
@@ -24,16 +24,16 @@ module.exports = function(sequelize, DataTypes) {
             validate: {
                 isUrl: true,
                 len: [1]
-            }
+                }
             },
 
         dateApplied: {
-            type: DataTypes.STRING,
-            allowNull: true, //It could be useful for being mindful about a job position.
-            validate: {
-                isEmail: true,
-                len: [1]
-            }
+            type: DataTypes.DATEONLY,
+            allowNull: true
+            // Possible moment integration if validating?
+            // get: function() {
+            //     return moment.utc(this.getDataValue('regDate')).format('YYYY-MM-DD');
+            //   }
             },
 
         documents: {
@@ -42,16 +42,15 @@ module.exports = function(sequelize, DataTypes) {
             validate: {
                 isUrl: true, // If multiple documents, then they should link to their folder.
                 len: [1]
-            }
+                }
             },
 
         notes: {
             type: DataTypes.TEXT,
             allowNull: true,
             validate: {
-                isEmail: true,
                 len: [1]
-            }
+                }
             }
 
         });
