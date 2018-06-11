@@ -1,14 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
     var Todo = sequelize.define("Todo", {
 
-        // id: {
-        //     type: DataTypes.INTEGER,
-        //     primaryKey: true,
-        //     autoIncrement: true,
-        //     unique: true,
-        //     field: 'id',
-        //     },
-        
         task_name: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -23,16 +15,6 @@ module.exports = function(sequelize, DataTypes) {
             validate: {
                 len: [1]
                 },
-            },
-
-        createdAt: {
-            type: DataTypes.DATE,
-            defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
-            },
-            
-        updatedAt: {
-            type: DataTypes.DATE,
-            defaultValue: sequelize.literal('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'),
             }
 
     });

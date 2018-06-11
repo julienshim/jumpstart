@@ -28,12 +28,12 @@ module.exports = function(sequelize, DataTypes) {
             },
 
         dateApplied: {
-            type: DataTypes.STRING,
-            allowNull: true, //It could be useful for being mindful about a job position.
-            validate: {
-                isEmail: true,
-                len: [1]
-                }
+            type: DataTypes.DATEONLY,
+            allowNull: true
+            // Possible moment integration if validating?
+            // get: function() {
+            //     return moment.utc(this.getDataValue('regDate')).format('YYYY-MM-DD');
+            //   }
             },
 
         documents: {
@@ -49,7 +49,6 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.TEXT,
             allowNull: true,
             validate: {
-                isEmail: true,
                 len: [1]
                 }
             }
