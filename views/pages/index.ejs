@@ -31,10 +31,8 @@
               <li class="dropdown">
                   <a href="#"class="dropdown-toggle" data-toggle="dropdown">Welcome to Jumpstart<b class="fa fa-angle-down"></b></a>
                   <ul class="dropdown-menu">
-                      <li><a href="#"><i class="fa fa-fw fa-user" style="color: #00bfff" ></i> Edit Profile</a></li>
-                      <li><a href="#"><i class="fa fa-fw fa-cog" style="color: #00bfff" ></i> Change Password</a></li>
-                      <li class="divider"></li>
-                      <li><a href="#"><i class="fa fa-fw fa-power-off" style="color: red"></i> Logout</a></li>
+                      <li class="g-signin2" data-onsuccess="onSignIn"></li>
+                      <li><a href="#" onclick="signOut();"><i class="fa fa-fw fa-power-off" style="color: red"></i> Logout</a></li>
                   </ul>
               </li>
           </ul>
@@ -43,21 +41,21 @@
           <div class="collapse navbar-collapse navbar-ex1-collapse">
               <ul class="nav navbar-nav side-nav">
           
-                  <li>
-                      <a href="#"><i class="fa fa-fw fa-paper-plane-o" style="color:#00aeef "></i> My Leads</a>
-                  </li>
+                <li>
+                    <a href="#"><i class="fa fa-fw fa-paper-plane-o" style="color:#00aeef "></i> My Leads</a>
+                </li>
 
-                  <li>
-                      <a href="investigaciones/favoritas"><i class="fa fa-fw fa-star" style="color: yellow"></i> To Do's</a>
-                  </li>
+                <li>
+                    <a href="investigaciones/favoritas"><i class="fa fa-fw fa-star" style="color: yellow"></i> To Do's</a>
+                </li>
 
-                  <li>
-                      <a href="sugerencias"><i class="fa fa-calendar" style="color:#eb008a"></i> Calendar</a>
-                  </li>
-                  
-                  <li>
-                      <a href="faq"><i class="fa fa-child" aria-hidden="true" style="color:#f8981d"></i> Networking</a>
-                  </li>
+                <li>
+                    <a href="sugerencias"><i class="fa fa-calendar" style="color:#eb008a"></i> Calendar</a>
+                </li>
+                
+                <li>
+                    <a href="faq"><i class="fa fa-child" aria-hidden="true" style="color:#f8981d"></i> Networking</a>
+                </li>
   
               </ul>
               
@@ -65,7 +63,7 @@
           <!-- /.navbar-collapse -->
       </nav>
       <div id="page-wrapper"></div>
-          <div class="container-fluid">
+            <div class="container-fluid">
               <!-- Page Heading -->
               <div class="row" id="main" >
                   <div class="col-sm-12 col-md-12 wellbg-dark text-white" id="content">

@@ -63,13 +63,14 @@ module.exports = function(app) {
                             }
                         }).then(function(result) {
                             if (!result) {
-                                getId.updateTokenByUserName(userName, req.body.idtoken);
-                                db.User.findOne({
-                                    where: {
-                                      idtoken: req.body.idtoken
-                                    }
-                                }).then(function(dbUser) {
-                                    res.json(dbUser);
+                                getId.updateTokenByUserName(userName, req.body.idtoken, function() {
+                                    db.User.findOne({
+                                        where: {
+                                          idtoken: req.body.idtoken
+                                        }
+                                    }).then(function(dbUser) {
+                                        res.json(dbUser);
+                                    });
                                 });
                             }
                             else {

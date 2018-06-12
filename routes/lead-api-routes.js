@@ -2,10 +2,10 @@ var db = require("../models");
 
 module.exports = function(app) {
 
-  app.get("/api/leads", function(req, res) {
+  app.get("/api/leads/:userId", function(req, res) {
     db.Lead.findAll({
       where: {
-        UserId: req.body.userId
+        UserId: req.params.userId
       },
       include: [db.User]
     }).then(function(dbLead) {
@@ -14,10 +14,11 @@ module.exports = function(app) {
   });
 
   // GET route for retrieving a single lead
-  app.get("/api/leads/:id", function(req, res) {
+  app.get("/api/leads/:userId/:leadId", function(req, res) {
     db.Lead.findOne({
       where: {
-        id: req.params.id
+        UserId: req.params.userId,
+        id: req.params.leadId
       },
       include: [db.User]
     }).then(function(dbLead) {

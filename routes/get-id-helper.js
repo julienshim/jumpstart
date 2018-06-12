@@ -18,7 +18,7 @@ var authHelper = {
         })
     },
 
-    updateTokenByUserName: function(userName, token) {
+    updateTokenByUserName: function(userName, token, cb) {
         db.User.update({
             idtoken: token
         },{
@@ -27,6 +27,7 @@ var authHelper = {
             plain: true
         }).then(function(result) {
             console.log("update token by username: " + result);
+            cb();
         }).catch(function(error) {
             console.log("update token by username: " + error);
             return error;
