@@ -7,8 +7,8 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false,
             validate: {
                 len: [1]
-                }
-            },
+            }
+        },
 
         email: {
             type: DataTypes.STRING,
@@ -16,18 +16,26 @@ module.exports = function(sequelize, DataTypes) {
             validate: {
                 isEmail: true,
                 len: [1]
-                }
             }
+        },
 
+        idtoken: {
+            type: DataTypes.TEXT,
+            allowNull: false,
+            validate: {
+                len: [1205]
+            }
+        }
+
+    });
+
+    User.associate = function(models) {
+
+        User.hasMany(models.Lead, {
+            onDelete: "cascade"
         });
 
-        User.associate = function(models) {
-
-            User.hasMany(models.Lead, {
-                onDelete: "cascade"
-            });
-
-        };
+    };
 
     return User;
 };
