@@ -40,7 +40,8 @@ module.exports = function(app) {
   //     "leadLink": "http://jobs.apple.com/someleadlink",
   //     "dateApplied": "2018-01-01",
   //     "documents": "http://drive.google.com/somedocumentslink",
-  //     "notes": "The hiring Manager is Jake Andrews."
+  //     "notes": "The hiring Manager is Jake Andrews.",
+  //     "UserId": 1
   // }
 
   // DELETE route for deleting leads
