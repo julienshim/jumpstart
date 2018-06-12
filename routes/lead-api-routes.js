@@ -3,12 +3,10 @@ var db = require("../models");
 module.exports = function(app) {
 
   app.get("/api/leads", function(req, res) {
-    var query = {};
-    if (req.query.user_id) { // Not sure what the req.query.tag will be so user_id for now
-      query.UserId = req.query.user_id;
-    }
     db.Lead.findAll({
-      where: query,
+      where: {
+        UserId: req.body.userId
+      },
       include: [db.User]
     }).then(function(dbLead) {
       res.json(dbLead);

@@ -1,5 +1,7 @@
 "use strict";
 
+var userId;
+
 // Google-provided example code that console logs out information provided by Google after user sign in
 var onSignIn = function(googleUser) {
 
@@ -21,10 +23,11 @@ var onSignIn = function(googleUser) {
     xhr.open('POST', '/api/auth');
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xhr.onload = function() {
-        console.log('Signed in as: ' + xhr.responseText);
+        console.log('Signed in as: ' + xhr.response);
+        userId = JSON.parse(xhr.response).id;
     };
     xhr.send('idtoken=' + id_token);
-    console.log(id_token);
+    // console.log(id_token);
 
     document.getElementsByClassName("g-signin2")[0].textContent = `Welcome, ${profile.getGivenName()}!`
 

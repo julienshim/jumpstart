@@ -55,19 +55,37 @@ module.exports = function(app) {
                     // the data we're most interested in will be under dbUser.dataValues
                     else {
                         // console.log(dbUser.dataValues);
-                        let userId = getId.getIdByToken(req.body.idtoken);
-                        console.log(userId);
-                        // let userId = getId.getIdByToken("this will fail");
-                        
-                        // logic for if idtoken isn't a match, update idtoken in user table then return user id
-                        if (!userId) {
-                            getId.updateTokenByUserName(userName, req.body.idtoken)
-                        }
 
-                        // else if it is a match just return the user id and use that for other queries
-                        else {
-                            console.log(userId);
-                        }
+                        db.User.findOne({
+                            attributes: ["id"],
+                            where: {
+                                idtoken: req.body.idtoken
+                            }
+                        }).then(function(result) {
+                            if (!result) {
+                                getId.updateTokenByUserName(userName, req.body.idtoken);
+                                db.User.findOne({
+                                    where: {
+                                      idtoken: req.body.idtoken
+                                    }
+                                }).then(function(dbUser) {
+                                    res.json(dbUser);
+                                });
+                            }
+                            else {
+                                db.User.findOne({
+                                    where: {
+                                      idtoken: req.body.idtoken
+                                    }
+                                }).then(function(dbUser) {
+                                    res.json(dbUser);
+                                });
+                            }
+                        }).catch(function (error) {
+                            console.log(error);
+                            return error;
+                        })
+                        // let userId = getId.getIdByToken("this will fail");
                     }
                 });
             }

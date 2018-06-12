@@ -9,10 +9,11 @@ var authHelper = {
             where: {
                 idtoken: token
             }
-        }).then(function(id) {
-            console.log("getIdByToken: "+ id.dataValues.id);
-            return id.dataValues.id;
+        }).then(function(result) {
+            console.log("getIdByToken: "+ result);
+            return result;
         }).catch(function (error) {
+            console.log(error);
             return error;
         })
     },
