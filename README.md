@@ -8,12 +8,15 @@ Jumpstart is a job application tracking built with MySQL, Node, Express to query
 
 1) Open the root folder and run `npm install`, which will install the following npm packages:
 
-* npm install body-parser
-* npm install dotenv
-* npm install express
-* npm install mysql2
-* npm install sequelize
-* npm install sequelize-cli
+    * npm install body-parser
+    * npm install dotenv
+    * npm install ejs
+    * npm install express
+    * npm install express-fileupload
+    * npm install google-auth-library"
+    * npm install mysql2
+    * npm install sequelize
+    * npm install sequelize-cli
 
 2) Create a `.env` file in the root directory of the project, then update it with your local MySQL instance connection information and credentials.  The file should look something like this:
 
@@ -29,12 +32,14 @@ DB_HOSTNAME=127.0.0.1
 
 4) Start the express server by entering the `node server.js` command from the root folder in the terminal / shell / command prompt. This will also sync the models via the db.sequelize.sync() fuction in the express server.
 
+**Screenshots/Demo GIF**
+
 **Team**
 
-Chris Huynh - https://github.com/chuynh18
-Dayan Thorne - https://github.com/dayansfo
-Taharka Taylor - https://github.com/TaharkaT
-Jerauld Manansala ("Julien") - https://github.com/jerauld  
+* Chris Huynh - https://github.com/chuynh18
+* Dayan Thorne - https://github.com/dayansfo
+* Taharka Taylor - https://github.com/TaharkaT
+* Jerauld Manansala ("Julien") - https://github.com/jerauld  
 
 **License**
 
