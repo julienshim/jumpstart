@@ -55,12 +55,19 @@ module.exports = function(app) {
                     // the data we're most interested in will be under dbUser.dataValues
                     else {
                         // console.log(dbUser.dataValues);
+                        let userId = getId.getIdByToken(req.body.idtoken);
+                        console.log(userId);
+                        // let userId = getId.getIdByToken("this will fail");
                         
-                        // write logic for if idtoken isn't a match, update idtoken in user table then return user id
+                        // logic for if idtoken isn't a match, update idtoken in user table then return user id
+                        if (!userId) {
+                            getId.updateTokenByUserName(userName, req.body.idtoken)
+                        }
+
                         // else if it is a match just return the user id and use that for other queries
-                        
-                        getId.getIdByToken(req.body.idtoken);
-                        res.json(dbUser);
+                        else {
+                            console.log(userId);
+                        }
                     }
                 });
             }
