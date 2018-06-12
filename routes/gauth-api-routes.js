@@ -23,7 +23,7 @@ module.exports = function(app) {
             const payload = ticket.getPayload();
             const userid = payload['sub'];
             const userMail = payload['email'];
-            const userName = userMail.split("@")[0]
+            const userName = userMail.split("@")[0];
             // If request specified a G Suite domain:
             //const domain = payload['hd'];
 
@@ -33,22 +33,13 @@ module.exports = function(app) {
 
             // perform appropriate db lookups after user authentication
             if (userName) {
-                // check for LocalStorage/SessionStorage
-                if (typeof(Storage) !== "undefined") {
-                    // store userName
-                    localStorage.setItem("user_name", userName);
-                } else {
-                    // someone is using a very old browser.  they have been bad and should feel bad
-                    console.log("update your old browser")
-                }
-
                 // see if the user already exists in our user table
                 db.User.findOne({
                     where: {
                       user_name: userName
                     }
                 }).then(function(dbUser) {
-                    console.log(dbUser);
+                    // console.log(dbUser.id);
                     // if the user doesn't yet exist, create them
                     if (!dbUser) {
                         db.User.create({
