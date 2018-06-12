@@ -1,4 +1,5 @@
 var db = require("../models");
+var getId = require("./get-id-helper");
 
 module.exports = function(app) {
     // bring in google's library as a dependency
@@ -28,8 +29,8 @@ module.exports = function(app) {
             //const domain = payload['hd'];
 
             // print userid to console
-            console.log("userid is...");
-            console.log(userid);
+            // console.log("userid is...");
+            // console.log(userid);
 
             // perform appropriate db lookups after user authentication
             if (userName) {
@@ -44,7 +45,8 @@ module.exports = function(app) {
                     if (!dbUser) {
                         db.User.create({
                             user_name: userName,
-                            email: userMail
+                            email: userMail,
+                            idtoken: req.body.idtoken
                         }).then(function(dbUser) {
                             res.json(dbUser);
                         });
@@ -52,7 +54,38 @@ module.exports = function(app) {
                     // otherwise, if they exist, return their data from the table
                     // the data we're most interested in will be under dbUser.dataValues
                     else {
-                        res.json(dbUser);
+                        // console.log(dbUser.dataValues);
+
+                        db.User.findOne({
+                            attributes: ["id"],
+                            where: {
+                                idtoken: req.body.idtoken
+                            }
+                        }).then(function(result) {
+                            if (!result) {
+                                getId.updateTokenByUserName(userName, req.body.idtoken);
+                                db.User.findOne({
+                                    where: {
+                                      idtoken: req.body.idtoken
+                                    }
+                                }).then(function(dbUser) {
+                                    res.json(dbUser);
+                                });
+                            }
+                            else {
+                                db.User.findOne({
+                                    where: {
+                                      idtoken: req.body.idtoken
+                                    }
+                                }).then(function(dbUser) {
+                                    res.json(dbUser);
+                                });
+                            }
+                        }).catch(function (error) {
+                            console.log(error);
+                            return error;
+                        })
+                        // let userId = getId.getIdByToken("this will fail");
                     }
                 });
             }
