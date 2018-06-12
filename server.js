@@ -1,6 +1,13 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 
+//express-fileupload test
+var fileUpload = require('express-fileupload');
+
+
+
+
+
 var app = express();
 var PORT = process.env.PORT || 3333;
 
@@ -10,7 +17,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static("public"));
 app.set("view engine", "ejs");
-
+app.use(fileUpload());
 require("./routes/html-api-routes.js")(app);
 require("./routes/lead-api-routes.js")(app);
 require("./routes/todo-api-routes.js")(app);

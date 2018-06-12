@@ -99,6 +99,18 @@
                         <label for="inputPassword3" class="col-sm-2 col-form-label">Documents</label>
                         <div class="col-sm-10">
                             <input class="form-control" id="inputPassword3" placeholder="attached">
+                            
+                            <!-- express file-upload test -->
+                            <form ref='uploadForm' 
+                            id='uploadForm' 
+                            action='/upload' 
+                            method='post' 
+                            encType="multipart/form-data">
+                              <input type="file" name="sampleFile" />
+                              <input type='submit' value='Upload!' />
+                            </form> 
+                            <!-- express file-upload test -->
+
                         </div>
                     </div>
                 
