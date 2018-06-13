@@ -1,4 +1,5 @@
 var db = require("../models");
+var meetup = require('../lib/meetup.js');
 
 module.exports = function(app) {
 
@@ -86,5 +87,12 @@ module.exports = function(app) {
       res.send('File uploaded!');
     });
   });
+
+  app.post('/events', function(req, res){
+    console.log(meetup)
+    meetup.getGroup('urlname: banodejs', function(err, resp) {
+      console.log(err, resp)
+    });
+  })
 
   };

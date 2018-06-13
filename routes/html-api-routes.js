@@ -48,4 +48,8 @@ module.exports = function(app) {
     res.render("pages/networking");
   });
 
+  app.get("/home", function(req, res) {
+    res.render("pages/myhome");
+  });
+
 }
