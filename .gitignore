@@ -1,3 +1,5 @@
 node_modules
 .DS_Store
 .env
+views/pages/index.ejs
+views/pages/index.ejs
