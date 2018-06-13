@@ -1,6 +1,7 @@
 "use strict";
 
 var userId;
+var id_token;
 
 // Google-provided example code that console logs out information provided by Google after user sign in
 var onSignIn = function(googleUser) {
@@ -15,7 +16,7 @@ var onSignIn = function(googleUser) {
     // console.log("Email: " + profile.getEmail());
 
     // The ID token you need to pass to your backend:
-    var id_token = googleUser.getAuthResponse().id_token;
+    id_token = googleUser.getAuthResponse().id_token;
     // console.log("ID Token: " + id_token);
 
     // send id_token to our back-end.  relevant back-end code in gauth-api-routes.js

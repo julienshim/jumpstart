@@ -3,7 +3,7 @@ var db = require("../models");
 
 var authHelper = {
 
-    getIdByToken: function(token) {
+    getIdByToken: function(token, cb) {
         db.User.findOne({
             attributes: ["id"],
             where: {
@@ -11,7 +11,7 @@ var authHelper = {
             }
         }).then(function(result) {
             console.log("getIdByToken: "+ result);
-            return result;
+            cb(result);
         }).catch(function (error) {
             console.log(error);
             return error;
