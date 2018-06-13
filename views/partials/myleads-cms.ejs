@@ -5,77 +5,119 @@
                 </div>
             </div>
             <hr>
-            <form>
-                  <div class="form-group row">
-                    <label for="input" class="col-sm-2 col-form-label">Company</label>
+            <form action="javascript:void(0);">
+                <div class="form-group row">
+                    <label for="company" class="col-sm-2 col-form-label">Company</label>
                     <div class="col-sm-10">
-                      <input class="form-control" id="company" placeholder="Company Name">
+                        <input class="form-control" id="company" placeholder="Company Name">
                     </div>
-                  </div>
-                  <br>
+                </div>
+                <br>
 
-                  <div class="form-group row">
-                    <label for="inputlink" class="col-sm-2 col-form-label">Job Post Link</label>
+                <div class="form-group row">
+                    <label for="position" class="col-sm-2 col-form-label">Position</label>
                     <div class="col-sm-10">
-                      <input class="form-control" id="inputlink" placeholder="Job Post URL">
+                        <input class="form-control" id="position" placeholder="Position Name">
                     </div>
-                  </div>
-                  <br>
+                </div>
+                <br>
 
-                  <div class="form-group row">
-                      <label for="inputPassword3" class="col-sm-2 col-form-label">Application Date</label>
-                      <div class="col-sm-10">
-                          <input class="form-control" id="inputPassword3" placeholder="mm/dd/year">
-                      </div>
-                  </div>
-                  <br>
+                <div class="form-group row">
+                    <label for="jobUrl" class="col-sm-2 col-form-label">Job Post Link</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" id="jobUrl" placeholder="Job Post URL">
+                    </div>
+                </div>
+                <br>
 
-                  <div class="form-group row">
-                      <label for="inputPassword3" class="col-sm-2 col-form-label">Documents</label>
-                      <div class="col-sm-10">
-                          <input class="form-control" id="inputPassword3" placeholder="attached">
-                          <form ref='uploadForm' 
-                          id='uploadForm' 
-                          action='/upload' 
-                          method='post' 
-                          encType="multipart/form-data">
+                <div class="form-group row">
+                    <label for="applicationDate" class="col-sm-2 col-form-label">Application Date</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" id="applicationDate" placeholder="yyyy-mm-dd">
+                    </div>
+                </div>
+                <br>
+
+                <div class="form-group row">
+                        <label for="jobDocuments" class="col-sm-2 col-form-label">Job documents</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" id="jobDocuments" placeholder="Document URL">
+                        </div>
+                    </div>
+                    <br>
+
+                <!-- <div class="form-group row">
+                    <label for="jobDocuments" class="col-sm-2 col-form-label">Documents</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" id="jobDocuments" placeholder="attached">
+                        <form ref='uploadForm' 
+                        id='uploadForm' 
+                        action='/upload' 
+                        method='post' 
+                        encType="multipart/form-data">
                             <input type="file" name="sampleFile"/>
                             <input type='submit' value='Upload!'/>
-                          </form> 
-                      </div>
-                  </div>
-                  <br>
-              
-                  <div class="form-group row">
+                        </form> 
+                    </div>
+                </div>
+                <br> -->
+                
+                <div class="form-group row">
                     <div class="col-sm-2"><strong>Status</strong></div>
                     <div class="col-sm-10">
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="gridCheck1">
-                        <label class="form-check-label" for="gridCheck1">
-                          Applied
-                        </label>
-                        <input class="form-check-input" type="checkbox" id="gridCheck2">
-                        <label class="form-check-label" for="gridCheck1">
-                          In Progress
-                        </label>
-                        <input class="form-check-input" type="checkbox" id="gridCheck3">
-                        <label class="form-check-label" for="gridCheck1">
-                          Not Started
-                        </label>
-                      </div>
+                        <div class="form-radio">
+                            
+                            <label class="radio-inline" for="radioApplied">
+                                <input class="form-radio-input" type="radio" id="radioApplied">
+                                Applied
+                            </label>
+                        
+                            <label class="radio-inline" for="radioInProgress">
+                                <input class="form-radio-input" type="radio" id="radioInProgress">
+                                In Progress
+                            </label>
+                            
+                            <label class="radio-inline" for="radioNotStarted">
+                                <input class="form-radio-input" type="radio" id="radioNotStarted">
+                                Not Started
+                            </label>
+                        </div>
                     </div>
-                  </div>
-                  <br>
-                      <div class="form-group">
-                              <label for="exampleFormControlTextarea1">Notes</label>
-                              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                            </div>
-                      <br>
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="jobNotes">Notes</label>
+                    <textarea class="form-control" id="jobNotes" rows="3"></textarea>
+                </div>
+                <br>
 
-                  <div class="form-group row">
+                <div class="form-group row">
                     <div class="col-sm-10">
-                      <button type="submit" class="btn btn-warning">Add</button>
+                        <button type="submit" id="jobSubmit" class="btn btn-warning">Add</button>
                     </div>
-                  </div>
-                </form>
+                </div>
+                <div class="form-group row" id="signInAlert"></div>
+            </form>
+
+            <div id="jobPosted" class="modal fade">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title" id="modalTitle">Your job lead has been saved!</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p><strong>Company:</strong> <span id="postedCompany"></span></p>
+                            <p><strong>Position:</strong> <span id="postedPosition"></span></p>
+                            <p><strong>Link:</strong> <span id="postedUrl"></span></p>
+                            <p><strong>Date:</strong> <span id="postedDate"></span></p>
+                            <p><strong>Document(s):</strong> <span id="postedDoc"></span></p>
+                            <p><strong>Notes:</strong> <span id="postedNotes"></span></p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">Got it</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <!-- /.row -->
