@@ -56,12 +56,34 @@ var onSubmit = function() {
         xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhr.send(formData);
     }
-
-    
 }
+
+var addTodo = function() {
+    var numOfTodos = document.getElementsByClassName("todo").length;
+    console.log(numOfTodos);
+
+    // example HTML: 
+    // <div class="form-group row">
+    //     <div class="col-sm-10">
+    //         <input class="form-control todo" id="todoTitle1" placeholder="Todo 1">
+    //     </div>
+    // </div>
+    // <div class="form-group">
+    //     <textarea class="form-control" id="todo1" rows="3" placeholder="Write your detailed Todo notes or instructions here"></textarea>
+    // </div>
+    // <br>
+
+}
+
 // wait for document to be ready then add an event listener to the submit button
 document.addEventListener("DOMContentLoaded", function() {
+
     document.getElementById("jobSubmit").addEventListener("click", () => {
         onSubmit();
     })
+
+    document.getElementById("addTodo").addEventListener("click", () => {
+        addTodo();
+    })
+
 })
