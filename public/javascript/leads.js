@@ -12,22 +12,33 @@ var onSubmit = function() {
         var documentUrl = document.getElementById("jobDocuments").value.trim();
         var jobNotes = document.getElementById("jobNotes").value.trim();
 
-        console.log("company: " + company);
-        console.log("position: " + position);
-        console.log("jobUrl: " + jobUrl);
-        console.log("applicationDate: " + applicationDate);
-        console.log("documentUrl: " + documentUrl);
-        console.log("jobNotes: " + jobNotes);
-        console.log("userId: " + userId);
+        // check to make sure things work
+        // console.log("company: " + company);
+        // console.log("position: " + position);
+        // console.log("jobUrl: " + jobUrl);
+        // console.log("applicationDate: " + applicationDate);
+        // console.log("documentUrl: " + documentUrl);
+        // console.log("jobNotes: " + jobNotes);
+        // console.log("userId: " + userId);
 
+        // the urlencoded form data that we will submit
         var formData = `company=${company}&position=${position}&leadLink=${jobUrl}&dateApplied=${applicationDate}&documents=${documentUrl}&notes=${jobNotes}&UserId=${userId}`;
 
-        // send data to server
+        // okay, this is the part that is responsible for sending and receiving data from the server
         var xhr = new XMLHttpRequest();
 
+        // this part listens for responses and acts on them
         xhr.onload = function() {
             var response = JSON.parse(xhr.response);
             console.log(response);
+
+            // clear out the form only on successful submission
+            document.getElementById("company").value = "";
+            document.getElementById("position").value = "";
+            document.getElementById("jobUrl").value = "";
+            document.getElementById("applicationDate").value = "";
+            document.getElementById("jobDocuments").value = "";
+            document.getElementById("jobNotes").value = "";
 
             // do stuff here such as tell user form successfully submitted or pop a modal
             document.getElementById("modalTitle").textContent = `${givenName}, your job lead has been saved!`
@@ -40,6 +51,7 @@ var onSubmit = function() {
             $("#jobPosted").modal('show');
         }
 
+        // sending stuff to the server for reals
         xhr.open("POST", "/api/leads", true);
         xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhr.send(formData);
@@ -47,9 +59,9 @@ var onSubmit = function() {
 
     
 }
-
+// wait for document to be ready then add an event listener to the submit button
 document.addEventListener("DOMContentLoaded", function() {
-    document.getElementById("jobSubmit").addEventListener("click", (event) => {
+    document.getElementById("jobSubmit").addEventListener("click", () => {
         onSubmit();
     })
 })
