@@ -21,10 +21,14 @@ module.exports = function(app) {
   //---------------------------------------------------------------------------------------------------------
   
   app.get("/", function(req, res) {
+    res.render("pages/test-index");
+  });
+
+  app.get("/myleads", function(req, res) {
     res.render("pages/myleads");
   });
 
-  app.get("/", function(req, res) {
+  app.get("/myleads-cms", function(req, res) {
     res.render("pages/myleads-cms");
   });
 
@@ -32,7 +36,7 @@ module.exports = function(app) {
     res.render("pages/todos");
   });
 
-  app.get("/todos", function(req, res) {
+  app.get("/todos-cms", function(req, res) {
     res.render("pages/todos-cms");
   });
 
@@ -41,7 +45,7 @@ module.exports = function(app) {
   });
 
   app.get("/networking", function(req, res) {
-    res.render("pages/calendar");
+    res.render("pages/networking");
   });
 
 }
