@@ -25,6 +25,7 @@
     "express": "^4.16.3",
     "express-fileupload": "^0.4.0",
     "google-auth-library": "^1.6.1",
+    "meetup-api": "^1.4.32",
     "mysql2": "^1.5.3",
     "sequelize": "^4.37.10",
     "sequelize-cli": "^4.0.0"
