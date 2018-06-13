@@ -60,19 +60,41 @@ var onSubmit = function() {
 
 var addTodo = function() {
     var numOfTodos = document.getElementsByClassName("todo").length;
-    console.log(numOfTodos);
 
-    // example HTML: 
-    // <div class="form-group row">
-    //     <div class="col-sm-10">
-    //         <input class="form-control todo" id="todoTitle1" placeholder="Todo 1">
-    //     </div>
-    // </div>
-    // <div class="form-group">
-    //     <textarea class="form-control" id="todo1" rows="3" placeholder="Write your detailed Todo notes or instructions here"></textarea>
-    // </div>
-    // <br>
+    var titleParent = document.createElement("div");
+    titleParent.classList.add("form-group", "row");
 
+    var titleLabel = document.createElement("label");
+    titleLabel.setAttribute("for", `todoTitle${numOfTodos+1}`)
+    titleLabel.classList.add("col-sm-2", "col-form-label");
+    titleLabel.textContent = `Todo ${numOfTodos+1}`;
+
+    var todoTitleDiv = document.createElement("div");
+    todoTitleDiv.classList.add("col-sm-10");
+
+    var inputTitle = document.createElement("input");
+    inputTitle.classList.add("form-control", "todo");
+    inputTitle.id = `todoTitle${numOfTodos+1}`;
+    inputTitle.setAttribute("placeholder", `Example:  Update my resume`);
+
+    todoTitleDiv.appendChild(inputTitle);
+    titleParent.appendChild(titleLabel);
+    titleParent.appendChild(todoTitleDiv);
+
+    var detailParent = document.createElement("div");
+    detailParent.classList.add("form-group");
+
+    var inputDetail = document.createElement("textarea");
+    inputDetail.classList.add("form-control");
+    inputDetail.id = `todo${numOfTodos+1}`;
+    inputDetail.setAttribute("rows", 3);
+    inputDetail.setAttribute("placeholder", "Example:  Tailor resume intro to highlight strengths relevant to this position and company");
+
+    detailParent.appendChild(inputDetail);
+
+    document.getElementById("todoSpawn").appendChild(titleParent);
+    document.getElementById("todoSpawn").appendChild(detailParent);
+    document.getElementById("todoSpawn").appendChild(document.createElement("br"));
 }
 
 // wait for document to be ready then add an event listener to the submit button
