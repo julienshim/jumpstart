@@ -51,22 +51,15 @@ module.exports = function(app) {
                             res.json(dbUser);
                         });
                     }
-                    // otherwise, if they exist, return their data from the table
-                    // the data we're most interested in will be under dbUser.dataValues
+                    // if the user already exists, find them by their session token
                     else {
-                        // console.log(dbUser.dataValues);
-
-                        db.User.findOne({
-                            attributes: ["id"],
-                            where: {
-                                idtoken: req.body.idtoken
-                            }
-                        }).then(function(result) {
+                        getId.getIdByToken(req.body.idtoken, function(result) {
+                            // if the token doesn't match, update the token we have stored
                             if (!result) {
                                 getId.updateTokenByUserName(userName, req.body.idtoken, function() {
                                     db.User.findOne({
                                         where: {
-                                          idtoken: req.body.idtoken
+                                            idtoken: req.body.idtoken
                                         }
                                     }).then(function(dbUser) {
                                         res.json(dbUser);
@@ -76,16 +69,14 @@ module.exports = function(app) {
                             else {
                                 db.User.findOne({
                                     where: {
-                                      idtoken: req.body.idtoken
+                                        idtoken: req.body.idtoken
                                     }
                                 }).then(function(dbUser) {
                                     res.json(dbUser);
                                 });
                             }
-                        }).catch(function (error) {
-                            console.log(error);
-                            return error;
                         })
+
                         // let userId = getId.getIdByToken("this will fail");
                     }
                 });

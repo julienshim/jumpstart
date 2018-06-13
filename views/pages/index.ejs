@@ -1,0 +1,176 @@
+<!-- views/pages/index.ejs -->
+<!DOCTYPE html>
+
+<html lang="en-us">
+    <head>
+        <% include ../partials/head %>
+    </head>
+    <body class="container">
+
+        <div id="throbber" style="display:none; min-height:120px;"></div>
+        <div id="noty-holder"></div>
+        <div id="wrapper">
+
+            <!-- Navigation -->
+            <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+            <!-- Top Menu Items -->
+            <ul class="nav navbar-right top-nav">
+                <li><a href="#"><i class="fa far fa-bolt" style= "font-size:22px; color: rgb(14, 185, 14)" ></i>
+                    </a>
+                </li>            
+                <li class="dropdown">
+                    <a href="#"class="dropdown-toggle" data-toggle="dropdown">Welcome to Jumpstart<b class="fa fa-angle-down"></b></a>
+                    <ul class="dropdown-menu">
+                        <li class="g-signin2" data-onsuccess="onSignIn"></li>
+                        <li><a href="#" onclick="signOut();"><i class="fa fa-fw fa-power-off" style="color: red"></i> Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav side-nav">
+            
+                    <li>
+                        <a href="#"><i class="fa fa-fw fa-paper-plane-o" style="color:#00aeef "></i> My Leads</a>
+                    </li>
+
+                    <li>
+                        <a href="investigaciones/favoritas"><i class="fa fa-fw fa-star" style="color: yellow"></i> To Do's</a>
+                    </li>
+
+                    <li>
+                        <a href="sugerencias"><i class="fa fa-calendar" style="color:#eb008a"></i> Calendar</a>
+                    </li>
+                    
+                    <li>
+                        <a href="faq"><i class="fa fa-child" aria-hidden="true" style="color:#f8981d"></i> Networking</a>
+                    </li>
+    
+                </ul>
+                
+            </div>
+            <!-- /.navbar-collapse -->
+        </nav>
+        <div id="page-wrapper"></div>
+            <div class="container-fluid">
+                <!-- Page Heading -->
+                <div class="row" id="main" >
+                    <div class="col-sm-12 col-md-12 wellbg-dark text-white" id="content">
+                        <h1 class="text-center">Add Your New Lead</h1>
+                    </div>
+                </div>
+                <hr>
+                <form action="javascript:void(0);">
+                    <div class="form-group row">
+                        <label for="company" class="col-sm-2 col-form-label">Company</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" id="company" placeholder="Company Name">
+                        </div>
+                    </div>
+                    <br>
+
+                    <div class="form-group row">
+                        <label for="position" class="col-sm-2 col-form-label">Position</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" id="position" placeholder="Position Name">
+                        </div>
+                    </div>
+                    <br>
+
+                    <div class="form-group row">
+                        <label for="jobUrl" class="col-sm-2 col-form-label">Job Post Link</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" id="jobUrl" placeholder="Job Post URL">
+                        </div>
+                    </div>
+                    <br>
+
+                    <div class="form-group row">
+                        <label for="applicationDate" class="col-sm-2 col-form-label">Application Date</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" id="applicationDate" placeholder="yyyy-mm-dd">
+                        </div>
+                    </div>
+                    <br>
+
+                    <div class="form-group row">
+                            <label for="jobDocuments" class="col-sm-2 col-form-label">Job documents</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" id="jobDocuments" placeholder="Document URL">
+                            </div>
+                        </div>
+                        <br>
+
+                    <!-- <div class="form-group row">
+                        <label for="jobDocuments" class="col-sm-2 col-form-label">Documents</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" id="jobDocuments" placeholder="attached">
+                            <form ref='uploadForm' 
+                            id='uploadForm' 
+                            action='/upload' 
+                            method='post' 
+                            encType="multipart/form-data">
+                                <input type="file" name="sampleFile"/>
+                                <input type='submit' value='Upload!'/>
+                            </form> 
+                        </div>
+                    </div>
+                    <br> -->
+                    
+                    <div class="form-group row">
+                        <div class="col-sm-2"><strong>Status</strong></div>
+                        <div class="col-sm-10">
+                            <div class="form-radio">
+                                
+                                <label class="radio-inline" for="radioApplied">
+                                    <input class="form-radio-input" type="radio" id="radioApplied">
+                                    Applied
+                                </label>
+                            
+                                <label class="radio-inline" for="radioInProgress">
+                                    <input class="form-radio-input" type="radio" id="radioInProgress">
+                                    In Progress
+                                </label>
+                                
+                                <label class="radio-inline" for="radioNotStarted">
+                                    <input class="form-radio-input" type="radio" id="radioNotStarted">
+                                    Not Started
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label for="jobNotes">Notes</label>
+                        <textarea class="form-control" id="jobNotes" rows="3"></textarea>
+                    </div>
+                    <br>
+
+                    <div class="form-group row">
+                        <div class="col-sm-10">
+                            <button type="submit" id="jobSubmit" class="btn btn-warning">Add</button>
+                        </div>
+                    </div>
+                    <div class="form-group row" id="signInAlert"></div>
+                </form>
+                <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+        </div>
+        <!-- /#page-wrapper -->
+
+        <!-- since this page is hardcoded for submitting leads, embedding the lead-specific script here -->
+        <script src="/javascript/leads.js"></script>
+    </body>
+</html>
