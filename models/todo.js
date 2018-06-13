@@ -9,6 +9,11 @@ module.exports = function(sequelize, DataTypes) {
                 },
             },
 
+        completed: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: false,
+            },
+
         content: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -21,7 +26,7 @@ module.exports = function(sequelize, DataTypes) {
 
     Todo.associate = function(models) {
 
-        Todo.belongsTo(models.Todolist, {
+        Todo.belongsTo(models.Lead, {
             foreignKey: {
                 allowNull: false
             }

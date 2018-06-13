@@ -57,7 +57,7 @@ module.exports = function(sequelize, DataTypes) {
 
         Lead.associate = function(models) {
 
-            Lead.hasOne(models.Todolist, {
+            Lead.hasMany(models.Todo, {
                 onDelete: "cascade"
             });
 
