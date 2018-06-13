@@ -2,6 +2,7 @@
 
 var userId;
 var id_token;
+var givenName;
 
 // Google-provided example code that console logs out information provided by Google after user sign in
 var onSignIn = function(googleUser) {
@@ -11,6 +12,7 @@ var onSignIn = function(googleUser) {
     // console.log("ID: " + profile.getId()); // Don't send this directly to your server!
     // console.log('Full Name: ' + profile.getName());
     // console.log('Given Name: ' + profile.getGivenName());
+    givenName = profile.getGivenName();
     // console.log('Family Name: ' + profile.getFamilyName());
     // console.log("Image URL: " + profile.getImageUrl());
     // console.log("Email: " + profile.getEmail());
