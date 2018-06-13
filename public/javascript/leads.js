@@ -27,10 +27,17 @@ var onSubmit = function() {
 
         xhr.onload = function() {
             var response = JSON.parse(xhr.response);
-            console.log(typeof response);
             console.log(response);
 
             // do stuff here such as tell user form successfully submitted or pop a modal
+            document.getElementById("modalTitle").textContent = `${givenName}, your job lead has been saved!`
+            document.getElementById("postedCompany").textContent = response.company;
+            document.getElementById("postedPosition").textContent = response.position;
+            document.getElementById("postedUrl").textContent = response.leadLink;
+            document.getElementById("postedDate").textContent = response.dateApplied;
+            document.getElementById("postedDoc").textContent = response.documents;
+            document.getElementById("postedNotes").textContent = response.notes;
+            $("#jobPosted").modal('show');
         }
 
         xhr.open("POST", "/api/leads", true);
