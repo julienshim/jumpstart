@@ -1,8 +1,8 @@
 "use strict";
 
-var userId;
-var id_token;
-var givenName;
+var userId; // insecure user ID
+var id_token; // session token
+var givenName; // first name
 
 // Google-provided example code that console logs out information provided by Google after user sign in
 var onSignIn = function(googleUser) {

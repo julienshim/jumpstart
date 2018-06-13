@@ -1,7 +1,7 @@
             <!-- Page Heading -->
             <div class="row" id="main" >
                 <div class="col-sm-12 col-md-12 wellbg-dark text-white" id="content">
-                    <h1 class="text-center">Add Your New Lead </h1>
+                    <h1 class="text-center" style="color:#f8981d">Add Your New Lead </h1>
                 </div>
             </div>
             <hr>
@@ -33,34 +33,18 @@
                 <div class="form-group row">
                     <label for="applicationDate" class="col-sm-2 col-form-label">Application Date</label>
                     <div class="col-sm-10">
-                        <input class="form-control" id="applicationDate" placeholder="yyyy-mm-dd">
+                        <input class="form-control" type="date" id="applicationDate" placeholder="yyyy-mm-dd">
                     </div>
                 </div>
                 <br>
 
                 <div class="form-group row">
-                        <label for="jobDocuments" class="col-sm-2 col-form-label">Job documents</label>
-                        <div class="col-sm-10">
-                            <input class="form-control" id="jobDocuments" placeholder="Document URL">
-                        </div>
-                    </div>
-                    <br>
-
-                <!-- <div class="form-group row">
-                    <label for="jobDocuments" class="col-sm-2 col-form-label">Documents</label>
+                    <label for="jobDocuments" class="col-sm-2 col-form-label">Job documents</label>
                     <div class="col-sm-10">
-                        <input class="form-control" id="jobDocuments" placeholder="attached">
-                        <form ref='uploadForm' 
-                        id='uploadForm' 
-                        action='/upload' 
-                        method='post' 
-                        encType="multipart/form-data">
-                            <input type="file" name="sampleFile"/>
-                            <input type='submit' value='Upload!'/>
-                        </form> 
+                        <input class="form-control" id="jobDocuments" placeholder="Document URL">
                     </div>
                 </div>
-                <br> -->
+                <br>
                 
                 <div class="form-group row">
                     <div class="col-sm-2"><strong>Status</strong></div>
@@ -85,18 +69,42 @@
                     </div>
                 </div>
                 <br>
+
                 <div class="form-group">
                     <label for="jobNotes">Notes</label>
                     <textarea class="form-control" id="jobNotes" rows="3"></textarea>
                 </div>
+                
+                <h3 style="color:#f8981d">Add a To Do</h3>
                 <br>
+
+                <div id="todoSpawn">
+                    <div class="form-group row">
+                        <label for="todoTitle1" class="col-sm-2 col-form-label">Todo 1</label>
+                        <div class="col-sm-10">
+                            <input class="form-control todo" id="todoTitle1" placeholder="Example:  Update my resume">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" id="todo1" rows="3" placeholder="Example:  Tailor resume intro to highlight strengths relevant to this position and company"></textarea>
+                    </div>
+                    <br>
+                </div>
 
                 <div class="form-group row">
                     <div class="col-sm-10">
-                        <button type="submit" id="jobSubmit" class="btn btn-warning">Add</button>
+                        <button type="submit" id="addTodo" class="btn btn-secondary">Add a Todo</button>
                     </div>
                 </div>
-                <div class="form-group row" id="signInAlert"></div>
+
+                <hr>
+
+                <div class="form-group row">
+                    <div class="col-sm-10">
+                        <button type="submit" id="jobSubmit" class="btn btn-primary">Submit lead</button>
+                    </div>
+                </div>
+                <div class="form-group row" id="signInAlert"> </div>
             </form>
 
             <div id="jobPosted" class="modal fade">
