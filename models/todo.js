@@ -9,6 +9,11 @@ module.exports = function(sequelize, DataTypes) {
                 },
             },
 
+        completed: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: false,
+            },
+
         content: {
             type: DataTypes.STRING,
             allowNull: false,
