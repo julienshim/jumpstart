@@ -12,6 +12,9 @@ var onSubmit = function() {
         var documentUrl = document.getElementById("jobDocuments").value.trim();
         var jobNotes = document.getElementById("jobNotes").value.trim();
 
+        // in case user submitted date with "/" instead of "-"
+        applicationDate = applicationDate.replace("/", "-");
+
         // check to make sure things work
         // console.log("company: " + company);
         // console.log("position: " + position);
