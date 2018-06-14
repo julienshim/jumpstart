@@ -20,10 +20,10 @@ var onSubmit = function() {
 
         // this part listens for responses and acts on them
         xhr.onload = function() {
-            if ("company" in JSON.parse(xhr.response)) {
-
-                var response = JSON.parse(xhr.response);
-                console.log(response);
+            var response = JSON.parse(xhr.response);
+            console.log(response);
+            
+            if ("company" in response) {
 
                 // populate the modal that shows the user's submission, then make it visible
                 document.getElementById("modalTitle").textContent = `${givenName}, your job lead has been saved!`
