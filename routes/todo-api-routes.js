@@ -4,12 +4,12 @@ module.exports = function(app) {
 
   app.get("/api/todos", function(req, res) {
     var query = {};
-    if (req.query.todolist_id) { // Not sure what the req.query.tag will be so todolist_id for now
-      query.TodolistId = req.query.todolist_id;
+    if (req.query.leadId) { // Not sure what the req.query.tag will be so todolist_id for now
+      query.LeadId = req.query.leadId;
     }
     db.Todo.findAll({
       where: query,
-      include: [db.Todolist]
+      include: [db.Lead]
     }).then(function(dbTodo) {
       res.json(dbTodo);
     });
@@ -21,7 +21,7 @@ module.exports = function(app) {
       where: {
         id: req.params.id
       },
-      include: [db.Todolist]
+      include: [db.Lead]
     }).then(function(dbTodo) {
       res.json(dbTodo);
     });

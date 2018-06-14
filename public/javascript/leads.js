@@ -12,15 +12,6 @@ var onSubmit = function() {
         var documentUrl = document.getElementById("jobDocuments").value.trim();
         var jobNotes = document.getElementById("jobNotes").value.trim();
 
-        // check to make sure things work
-        // console.log("company: " + company);
-        // console.log("position: " + position);
-        // console.log("jobUrl: " + jobUrl);
-        // console.log("applicationDate: " + applicationDate);
-        // console.log("documentUrl: " + documentUrl);
-        // console.log("jobNotes: " + jobNotes);
-        // console.log("userId: " + userId);
-
         // the urlencoded form data that we will submit
         var formData = `company=${company}&position=${position}&leadLink=${jobUrl}&dateApplied=${applicationDate}&documents=${documentUrl}&notes=${jobNotes}&UserId=${userId}`;
 
@@ -29,26 +20,53 @@ var onSubmit = function() {
 
         // this part listens for responses and acts on them
         xhr.onload = function() {
-            var response = JSON.parse(xhr.response);
-            console.log(response);
+            if ("company" in JSON.parse(xhr.response)) {
 
-            // clear out the form only on successful submission
-            document.getElementById("company").value = "";
-            document.getElementById("position").value = "";
-            document.getElementById("jobUrl").value = "";
-            document.getElementById("applicationDate").value = "";
-            document.getElementById("jobDocuments").value = "";
-            document.getElementById("jobNotes").value = "";
+                var response = JSON.parse(xhr.response);
+                console.log(response);
 
-            // do stuff here such as tell user form successfully submitted or pop a modal
-            document.getElementById("modalTitle").textContent = `${givenName}, your job lead has been saved!`
-            document.getElementById("postedCompany").textContent = response.company;
-            document.getElementById("postedPosition").textContent = response.position;
-            document.getElementById("postedUrl").textContent = response.leadLink;
-            document.getElementById("postedDate").textContent = response.dateApplied;
-            document.getElementById("postedDoc").textContent = response.documents;
-            document.getElementById("postedNotes").textContent = response.notes;
-            $("#jobPosted").modal('show');
+                // populate the modal that shows the user's submission, then make it visible
+                document.getElementById("modalTitle").textContent = `${givenName}, your job lead has been saved!`
+                document.getElementById("postedCompany").textContent = response.company;
+                document.getElementById("postedPosition").textContent = response.position;
+                document.getElementById("postedUrl").textContent = response.leadLink;
+                document.getElementById("postedDate").textContent = response.dateApplied;
+                document.getElementById("postedDoc").textContent = response.documents;
+                document.getElementById("postedNotes").textContent = response.notes;
+                $("#jobPosted").modal('show');
+
+                // clear out the form only on successful submission
+                document.getElementById("company").value = "";
+                document.getElementById("position").value = "";
+                document.getElementById("jobUrl").value = "";
+                document.getElementById("applicationDate").value = "";
+                document.getElementById("jobDocuments").value = "";
+                document.getElementById("jobNotes").value = "";
+
+                // if the user chose to create todos, submit them now (because we need the lead to be created in the db first)
+                for (var i = 1; i < document.getElementsByClassName("todo").length + 1; i++) {
+                    if (!!document.getElementById(`todoTitle${i}`).value && !!document.getElementById(`todo${i}`).value) {
+                        var todoTitle = document.getElementById(`todoTitle${i}`).value;
+                        var todo = document.getElementById(`todo${i}`).value;
+
+                        var formData = `task_name=${todoTitle}&content=${todo}&LeadId=${response.id}`;
+                        console.log(formData);
+
+                        xhr.open("POST", "/api/todos", true);
+                        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                        xhr.send(formData);
+                    }
+                }
+
+                // remove extra todo fields
+                while (document.getElementsByClassName("todo").length > 1) {
+                    removeTodo();
+                }
+
+                // blank out the only remaining todo fields
+                document.getElementById("todo1").value = "";
+                document.getElementById("todoTitle1").value = "";
+            }
         }
 
         // sending stuff to the server for reals
@@ -58,7 +76,10 @@ var onSubmit = function() {
     }
 }
 
+// create another todo form in case the user wishes to fill out another todo item for the lead they're creating
 var addTodo = function() {
+    // totally acknowledging that using a counter is computationally faster than counting the number of todos on the page
+    // but realistically, the user isn't going to create a million todo forms, so it's k
     var numOfTodos = document.getElementsByClassName("todo").length;
 
     var titleParent = document.createElement("div");
@@ -105,6 +126,7 @@ var addTodo = function() {
     document.getElementById("removeTodo").classList.remove("btn-secondary");
 }
 
+// if the user feels they accidentally too many todo forms, they can remove them
 var removeTodo = function() {
     var numOfTodos = document.getElementsByClassName("todo").length;
     var lastBr = document.getElementsByTagName("br")[document.getElementsByTagName("br").length-1];
@@ -129,7 +151,7 @@ var removeTodo = function() {
     }
 }
 
-// wait for document to be ready then add an event listener to the submit button
+// wait for document to be ready before adding the appropriate event listeners to each button
 document.addEventListener("DOMContentLoaded", function() {
 
     document.getElementById("jobSubmit").addEventListener("click", () => {
