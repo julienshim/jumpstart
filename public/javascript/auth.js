@@ -19,6 +19,21 @@ var userIdObj = {
     }
 }
 
+var givenNameObj = {
+    aInternal: 0,
+    aListener: function(val) {},
+    set a(val) {
+      this.aInternal = val;
+      this.aListener(val);
+    },
+    get a() {
+      return this.aInternal;
+    },
+    registerListener: function(listener) {
+      this.aListener = listener;
+    }
+}
+
 // userIdObj.registerListener(function(val) {
 //     console.log("I listened for the userId and changed the URL");
 // });
@@ -32,6 +47,7 @@ var onSignIn = function(googleUser) {
     // console.log('Full Name: ' + profile.getName());
     // console.log('Given Name: ' + profile.getGivenName());
     givenName = profile.getGivenName();
+    givenNameObj.a = profile.getGivenName();
     // console.log('Family Name: ' + profile.getFamilyName());
     // console.log("Image URL: " + profile.getImageUrl());
     // console.log("Email: " + profile.getEmail());

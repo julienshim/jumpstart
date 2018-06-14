@@ -15,6 +15,7 @@ module.exports = function(app) {
       var leadArray = [];
       for (var i = 0; i < dbLead.length; i++) {
         var lead = {};
+        lead.id = dbLead[i].dataValues.id;
         lead.company = dbLead[i].dataValues.company;
         lead.position = dbLead[i].dataValues.position;
         leadArray.push(lead);
@@ -30,6 +31,7 @@ module.exports = function(app) {
 
   // GET route for retrieving a single lead
   app.get("/api/leads/:userId/:leadId", function(req, res) {
+    console.log(req.params)
     db.Lead.findOne({
       where: {
         UserId: req.params.userId,
@@ -37,6 +39,7 @@ module.exports = function(app) {
       },
       include: [db.User]
     }).then(function(dbLead) {
+      console.log(dbLead);
       res.json(dbLead);
     });
   });
@@ -72,7 +75,8 @@ module.exports = function(app) {
   });
 
   //PUT route for updating leads
-  app.put("/api/leads", function(req, res) {
+  app.put("/api/leads/", function(req, res) {
+    console.log("IN HEREEEEEEEEE MANG");
     db.Lead.update(
       req.body,
       {
