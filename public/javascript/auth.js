@@ -4,6 +4,25 @@ var userId; // insecure user ID
 var id_token; // session token
 var givenName; // first name
 
+var userIdObj = {
+    aInternal: 0,
+    aListener: function(val) {},
+    set a(val) {
+      this.aInternal = val;
+      this.aListener(val);
+    },
+    get a() {
+      return this.aInternal;
+    },
+    registerListener: function(listener) {
+      this.aListener = listener;
+    }
+}
+
+// userIdObj.registerListener(function(val) {
+//     console.log("I listened for the userId and changed the URL");
+// });
+
 // Google-provided example code that console logs out information provided by Google after user sign in
 var onSignIn = function(googleUser) {
 
@@ -28,6 +47,7 @@ var onSignIn = function(googleUser) {
     xhr.onload = function() {
         console.log('Signed in as: ' + xhr.response);
         userId = JSON.parse(xhr.response).id;
+        userIdObj.a = JSON.parse(xhr.response).id;
     };
     xhr.send('idtoken=' + id_token);
     // console.log(id_token);
