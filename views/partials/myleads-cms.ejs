@@ -79,29 +79,33 @@
                 <br>
 
                 <div id="todoSpawn">
-                    <div class="form-group row">
-                        <label for="todoTitle1" class="col-sm-2 col-form-label">Todo 1</label>
+                    <div class="form-group row" id="todoTitleParent1">
+                        <label for="todoTitle1" class="col-sm-2 col-form-label" id="todoLabel1">Todo 1</label>
                         <div class="col-sm-10">
                             <input class="form-control todo" id="todoTitle1" placeholder="Example:  Update my resume">
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" id="todoParent1">
                         <textarea class="form-control" id="todo1" rows="3" placeholder="Example:  Tailor resume intro to highlight strengths relevant to this position and company"></textarea>
                     </div>
                     <br>
                 </div>
 
                 <div class="form-group row">
-                    <div class="col-sm-10">
-                        <button type="submit" id="addTodo" class="btn btn-secondary">Add a Todo</button>
+                    <div class="col-sm-2">
+                        <button type="submit" id="addTodo" class="btn btn-success">Add a Todo</button>
+                        
+                    </div>
+                    <div class="col-sm-2">
+                        <button type="submit" id="removeTodo" class="btn btn-secondary">Remove Todo</button>
                     </div>
                 </div>
 
                 <hr>
 
                 <div class="form-group row">
-                    <div class="col-sm-10">
-                        <button type="submit" id="jobSubmit" class="btn btn-primary">Submit lead</button>
+                    <div class="col-sm-12">
+                        <button type="submit" id="jobSubmit" class="btn btn-primary pull-right">Submit lead</button>
                     </div>
                 </div>
                 <div class="form-group row" id="signInAlert"> </div>
