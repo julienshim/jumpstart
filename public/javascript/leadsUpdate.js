@@ -1,9 +1,12 @@
 "use strict";
 
+var leadId;
+
 var onLeadClick = function(element) {
-    var leadId = element.getAttribute("data-value");
+    leadId = element.getAttribute("data-value");
     
     var xhr = new XMLHttpRequest();
+    
     xhr.onload = function() {
         var response = JSON.parse(xhr.response);
         if ("company" in response) {
@@ -17,42 +20,40 @@ var onLeadClick = function(element) {
                         document.getElementById("jobNotesView").textContent = response.notes;
                         $("#jobView").modal('show');
         }
-
-
-    //     // okay, this is the part that is responsible for sending and receiving data from the server
-    //     var xhr = new XMLHttpRequest();
-
-    //     // this part listens for responses and acts on them
-    //     xhr.onload = function() {
-    //         var response = JSON.parse(xhr.response);
-    //         console.log(response);
-            
-    //         if ("company" in response) {
-
-    //             // populate the modal that shows the user's submission, then make it visible
-    //             document.getElementById("modalTitle").textContent = `${givenName}, your job lead has been saved!`
-    //             document.getElementById("postedCompany").textContent = response.company;
-    //             document.getElementById("postedPosition").textContent = response.position;
-    //             document.getElementById("postedUrl").textContent = response.leadLink;
-    //             document.getElementById("postedDate").textContent = response.dateApplied;
-    //             document.getElementById("postedDoc").textContent = response.documents;
-    //             document.getElementById("postedNotes").textContent = response.notes;
-    //             $("#jobPosted").modal('show');
-
-    //             // clear out the form only on successful submission
-    //             document.getElementById("company").value = "";
-    //             document.getElementById("position").value = "";
-    //             document.getElementById("jobUrl").value = "";
-    //             document.getElementById("applicationDate").value = "";
-    //             document.getElementById("jobDocuments").value = "";
-    //             document.getElementById("jobNotes").value = "";
-
    }
 
         xhr.open("GET", `/api/leads/${userId}/${leadId}`);
         xhr.send();
 
 }
+
+var onLeadUpdate = function() {
+
+        if (!userId) {
+            document.getElementById("signInAlert").textContent = "Please sign in first!";
+        }
+        else {
+
+                var company = document.getElementById("companyView").value.trim();
+                var position = document.getElementById("positionView").value.trim();
+                var jobUrl = document.getElementById("jobUrlView").value.trim();
+                var applicationDate = document.getElementById("applicationDateView").value.trim();
+                var documentUrl = document.getElementById("jobDocumentsView").value.trim();
+                var jobNotes = document.getElementById("jobNotesView").value.trim();
+        
+        
+                var formData = `id=${leadId}&company=${company}&position=${position}&leadLink=${jobUrl}&dateApplied=${applicationDate}&documents=${documentUrl}&notes=${jobNotes}&UserId=${userId}`;
+                
+                var xhr = new XMLHttpRequest();
+
+                xhr.open("PUT", "/api/leads");
+                xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xhr.send(formData);
+
+        }
+
+
+}   
 
 
 // wait for document to be ready before adding the appropriate event listeners to each button
@@ -66,4 +67,6 @@ document.addEventListener("DOMContentLoaded", function() {
         })
     }
 
-})
+    document.getElementById("jobUpdate").addEventListener("click", onLeadUpdate);
+
+});
