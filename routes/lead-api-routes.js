@@ -4,13 +4,27 @@ var meetup = require('../lib/meetup.js');
 module.exports = function(app) {
 
   app.get("/api/leads/:userId", function(req, res) {
+    console.log("HERERERERERE")
     db.Lead.findAll({
       where: {
         UserId: req.params.userId
       },
       include: [db.User]
-    }).then(function(dbLead) {
-      res.json(dbLead);
+    }
+  ).then(function(dbLead) {
+      var leadArray = [];
+      for (var i = 0; i < dbLead.length; i++) {
+        var lead = {};
+        lead.company = dbLead[i].dataValues.company;
+        lead.position = dbLead[i].dataValues.position;
+        leadArray.push(lead);
+      }
+      console.log("┬┴┬┴┬┴┬┴┬┴┬┴┬┴┬┴┬┴┬┴┬┴┬┴┬┴┬┴┬┴┬┴┬┴┬┴┬┴┬", typeof leadArray);
+      console.log("┬┴┬┴┬┴┬┴┬┴┬┴┬┴┬┴┬┴┬┴┬┴┬┴┬┴┬┴┬┴┬┴┬┴┬┴┬┴┬", leadArray);
+       res.render('pages/myleads', {
+        leadArray: leadArray
+       });
+  
     });
   });
 
