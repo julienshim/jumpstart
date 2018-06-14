@@ -21,9 +21,9 @@ module.exports = function(app) {
       }
       console.log("┬┴┬┴┬┴┬┴┬┴┬┴┬┴┬┴┬┴┬┴┬┴┬┴┬┴┬┴┬┴┬┴┬┴┬┴┬┴┬", typeof leadArray);
       console.log("┬┴┬┴┬┴┬┴┬┴┬┴┬┴┬┴┬┴┬┴┬┴┬┴┬┴┬┴┬┴┬┴┬┴┬┴┬┴┬", leadArray);
-       res.render('pages/myleads', {
+      res.render('pages/myleads', {
         leadArray: leadArray
-       });
+      });
   
     });
   });
