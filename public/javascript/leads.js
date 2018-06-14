@@ -63,10 +63,12 @@ var addTodo = function() {
 
     var titleParent = document.createElement("div");
     titleParent.classList.add("form-group", "row");
+    titleParent.id = `todoTitleParent${numOfTodos+1}`;
 
     var titleLabel = document.createElement("label");
     titleLabel.setAttribute("for", `todoTitle${numOfTodos+1}`)
     titleLabel.classList.add("col-sm-2", "col-form-label");
+    titleLabel.id = `todoLabel${numOfTodos+1}`;
     titleLabel.textContent = `Todo ${numOfTodos+1}`;
 
     var todoTitleDiv = document.createElement("div");
@@ -83,6 +85,7 @@ var addTodo = function() {
 
     var detailParent = document.createElement("div");
     detailParent.classList.add("form-group");
+    detailParent.id = `todoParent${numOfTodos+1}`;
 
     var inputDetail = document.createElement("textarea");
     inputDetail.classList.add("form-control");
@@ -95,6 +98,35 @@ var addTodo = function() {
     document.getElementById("todoSpawn").appendChild(titleParent);
     document.getElementById("todoSpawn").appendChild(detailParent);
     document.getElementById("todoSpawn").appendChild(document.createElement("br"));
+
+    // no conditional checks for these because adding a class that already exists does nothing
+    // removing a class that doesn't exist also does nothing (and does not throw errors either)
+    document.getElementById("removeTodo").classList.add("btn-danger");
+    document.getElementById("removeTodo").classList.remove("btn-secondary");
+}
+
+var removeTodo = function() {
+    var numOfTodos = document.getElementsByClassName("todo").length;
+    var lastBr = document.getElementsByTagName("br")[document.getElementsByTagName("br").length-1];
+    
+    if (numOfTodos > 1) {
+        lastBr.parentElement.removeChild(lastBr);
+        document.getElementById(`todoLabel${numOfTodos}`).parentElement.removeChild(document.getElementById(`todoLabel${numOfTodos}`));
+        document.getElementById(`todo${numOfTodos}`).parentElement.removeChild(document.getElementById(`todo${numOfTodos}`));
+        document.getElementById(`todoTitle${numOfTodos}`).parentElement.removeChild(document.getElementById(`todoTitle${numOfTodos}`));
+        document.getElementById(`todoTitleParent${numOfTodos}`).parentElement.removeChild(document.getElementById(`todoTitleParent${numOfTodos}`));
+        document.getElementById(`todoParent${numOfTodos}`).parentElement.removeChild(document.getElementById(`todoParent${numOfTodos}`));
+    }
+
+    if (numOfTodos > 2) {
+        document.getElementById("removeTodo").classList.add("btn-danger");
+        document.getElementById("removeTodo").classList.remove("btn-secondary");
+    }
+
+    if (numOfTodos <= 2) {
+        document.getElementById("removeTodo").classList.add("btn-secondary");
+        document.getElementById("removeTodo").classList.remove("btn-danger");
+    }
 }
 
 // wait for document to be ready then add an event listener to the submit button
@@ -106,6 +138,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
     document.getElementById("addTodo").addEventListener("click", () => {
         addTodo();
+    })
+
+    document.getElementById("removeTodo").addEventListener("click", () => {
+        removeTodo();
     })
 
 })
