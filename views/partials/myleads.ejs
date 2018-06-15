@@ -8,4 +8,82 @@
 
 <!-- ↓↓↓  Main Content Goes Below ↓↓↓ -->
 
-<img src="https://media3.giphy.com/media/SRO0ZwmImic0/giphy-downsized.gif" alt="my leads under construction cat"/>
+<ul>
+    <% leadArray.forEach(function(lead) { %>
+        <li class="leads"><a href="#" class="leadLink" data-value="<%= lead.id %>"><%= lead.position %>, <%= lead.company %></a></li>
+    <% }); %>
+</ul>
+
+                <!-- Page Heading -->
+                
+        
+                    <div id="jobView" class="modal fade">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    <h4 class="modal-title" id="modalTitle">Lead Details</h4>
+                                </div>
+                                <div class="modal-body">
+                                            <form action="javascript:void(0);">
+                                                <div class="form-group row">
+                                                    <label for="company" class="col-sm-12 col-form-label">Company</label>
+                                                    <div class="col-sm-12">
+                                                        <input class="form-control" id="companyView" value="Company Name">
+                                                    </div>
+                                                </div>
+                                                <br>
+                                
+                                                <div class="form-group row">
+                                                    <label for="position" class="col-sm-12 col-form-label">Position</label>
+                                                    <div class="col-sm-12">
+                                                        <input class="form-control" id="positionView" value="Position Name">
+                                                    </div>
+                                                </div>
+                                                <br>
+                                
+                                                <div class="form-group row">
+                                                    <label for="jobUrl" class="col-sm-12 col-form-label">Job Post Link</label>
+                                                    <div class="col-sm-12">
+                                                        <input class="form-control" id="jobUrlView" value="Job Post URL">
+                                                    </div>
+                                                </div>
+                                                <br>
+                                
+                                                <div class="form-group row">
+                                                    <label for="applicationDate" class="col-sm-12 col-form-label">Application Date</label>
+                                                    <div class="col-sm-12">
+                                                        <input class="form-control" type="date" id="applicationDateView" value="yyyy-mm-dd">
+                                                    </div>
+                                                </div>
+                                                <br>
+                                
+                                                <div class="form-group row">
+                                                    <label for="jobDocuments" class="col-sm-12 col-form-label">Job documents</label>
+                                                    <div class="col-sm-12">
+                                                        <input class="form-control" id="jobDocumentsView" value="Document URL">
+                                                    </div>
+                                                </div>
+                                                <br>
+                                
+                                                <div class="form-group">
+                                                    <label for="jobNotes">Notes</label>
+                                                    <textarea class="form-control" id="jobNotesView" rows="3">The text here is not a value.</textarea>
+                                                </div>
+                                
+                                                <div class="form-group row">
+                                                    <div class="col-sm-12">
+                                                        
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row" id="signInAlert"> </div>
+                                            </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" id="jobSubmit" class="btn btn-primary pull-right">Submit lead</button>
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal">Got it</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.row -->
