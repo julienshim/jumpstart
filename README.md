@@ -4,6 +4,10 @@
 
 Jumpstart is a job application tracking app that helps users tracking every details about their job application such as important dates, tasks, related documents, links, networking events, related notes, and more. It was built with MySQL, Node, Express to query and route data, Embedded Javascript (EJS) to generate the HTML, utilizes Sequelize ORM, Google Authentication, and follows the MVC design pattern.
 
+**Motivation**
+
+Job hunting can get messy so we wanted to provide users, including our Berkeley Coding Boot Camp peers, with the opportunity to manage their applications in one place. 
+
 **Setup**
 
 1) Open the root folder and run `npm install`, which will install the following npm packages:
