@@ -8,4 +8,8 @@
     
     <!-- ↓↓↓  Main Content Goes Below ↓↓↓ -->
     
-    <img src="https://media3.giphy.com/media/SRO0ZwmImic0/giphy-downsized.gif" alt="todolist display my todos under construction cat"/>
+    <ul>
+        <% todoArray.forEach(function(todo) { %>
+            <li class="leads <%= todo.todoCompleted %>"><a href="#" class="leadLink" data-lead="<%= todo.todoId %>" data-id="<%= todo.todoleadId %>"><%= todo.todoleadPosition %>, <%= todo.todoleadCompany %> >> <%= todo.todoTaskName %>: <%= todo.todoContent%>,  <em></em></a></li>
+        <% }); %>
+    </ul>
