@@ -3,5 +3,7 @@
 userIdObj.registerListener(function(val) {
     document.getElementById("myLeadsClick").setAttribute("href", `/api/leads/${val}`);
     document.getElementById("myTodosClick").setAttribute("href", `/api/todos/${val}`);
-    // document.getElementById("showLeads").setAttribute("href", `/api/leads/${val}`);
+    if (document.getElementById("viewLeadsBtn")) {
+        document.getElementById("viewLeadsBtn").setAttribute("href", `/api/leads/${val}`);
+    }
 });

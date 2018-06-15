@@ -21,7 +21,7 @@ module.exports = function(app) {
   //---------------------------------------------------------------------------------------------------------
   
   app.get("/", function(req, res) {
-    res.render("pages/test-index");
+    res.render("pages/myhome");
   });
 
   app.get("/myleads", function(req, res) {
@@ -48,8 +48,8 @@ module.exports = function(app) {
     res.render("pages/networking");
   });
 
-  app.get("/home", function(req, res) {
-    res.render("pages/myhome");
-  });
+  // app.get("/home", function(req, res) {
+  //   res.render("pages/myhome");
+  // });
 
 }
