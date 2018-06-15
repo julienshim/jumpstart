@@ -2,7 +2,7 @@
 
 **Description**
 
-Jumpstart is a job application tracking built with MySQL, Node, Express to query and route data, Embedded Javascript (EJS) to generate the HTML, utilizes Sequelize ORM, Google Authentication, and follows the MVC design pattern.
+Jumpstart is a job application tracking app that helps users tracking every details about their job application such as important dates, tasks, related documents, links, networking events, related notes, and more. It was built with MySQL, Node, Express to query and route data, Embedded Javascript (EJS) to generate the HTML, utilizes Sequelize ORM, Google Authentication, and follows the MVC design pattern.
 
 **Setup**
 
@@ -32,7 +32,35 @@ DB_HOSTNAME=127.0.0.1
 
 4) Start the express server by entering the `node server.js` command from the root folder in the terminal / shell / command prompt. This will also sync the models via the db.sequelize.sync() fuction in the express server.
 
-**Screenshots/Demo GIF**
+**Live Demo**
+
+[Jumpstart on Heroku](https://obscure-beach-77511.herokuapp.com/)
+
+**Screenshots**
+
+Sign-In / Welcome to Jumpstart
+
+<img src="https://github.com/jerauld/jumpstart/blob/master/public/images/signedin.jpg?raw=true" width="580px"/>
+
+Add Your New Lead
+
+<img src="https://github.com/jerauld/jumpstart/blob/master/public/images/addnewlead.jpg?raw=true" width="580px"/>
+
+My Leads
+
+<img src="https://github.com/jerauld/jumpstart/blob/master/public/images/myleads.jpg?raw=true" width="580px"/>
+
+Update Lead
+
+<img src="https://github.com/jerauld/jumpstart/blob/master/public/images/updateleaddetails.jpg?raw=true" width="580px"/>
+
+Upcoming To Do's
+
+<img src="https://github.com/jerauld/jumpstart/blob/master/public/images/todos.jpg?raw=true" width="580px"/>
+
+Networking / Upcoming Events
+
+<img src="https://github.com/jerauld/jumpstart/blob/master/public/images/networking.jpg?raw=true" width="580px"/>
 
 **Team**
 
