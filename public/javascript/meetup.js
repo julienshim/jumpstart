@@ -14,19 +14,15 @@
          method:'get',
          url:url,
   success:function(result) {
-    console.log(result);
+    console.log(result.data[0].link);
     result.data.forEach(function(event){
-      $('body').append(`<p>${event.name}</p>`);
-      $('body').append(`<a href=${event.link}>Link</a>`);
+      var link =  $('<a href="' + event.link + '">link</a>') 
+      $('#results').append(`<li>${event.name}</li>`);
+      $('#results').append(link)
     })
   }
 });
 
       })
-      // var cityName = "Berkeley";
-      // Here we use jQuery to select the header with "click-me" as its ID.
-      // Whenever it is clicked...
-      //http://api.jquery.com/on/
      	
-
     });

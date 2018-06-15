@@ -76,6 +76,7 @@ module.exports = function(app) {
 
   //PUT route for updating leads
   app.put("/api/leads/", function(req, res) {
+    console.log("IN HEREEEEEEEEE MANG");
     db.Lead.update(
       req.body,
       {
