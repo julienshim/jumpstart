@@ -10,6 +10,6 @@
     
     <ul>
         <% todoArray.forEach(function(todo) { %>
-            <li class="leads <%= todo.todoCompleted %>"><a href="#" class="leadLink" data-lead="<%= todo.todoId %>" data-id="<%= todo.todoleadId %>"><%= todo.todoleadPosition %>, <%= todo.todoleadCompany %> >> <%= todo.todoTaskName %>: <%= todo.todoContent%>,  <em></em></a></li>
+            <li class="leads <%= todo.gtodoCompleted %>"><a href="#" class="leadLink" data-lead="<%= todo.todoId %>" data-id="<%= todo.todoleadId %>"><%= todo.todoleadPosition %>, <%= todo.todoleadCompany %> >> <%= todo.todoTaskName %>: <%= todo.todoContent%>,  <em></em></a></li>
         <% }); %>
     </ul>
