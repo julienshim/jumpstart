@@ -71,7 +71,7 @@ Networking / Upcoming Events
 * Chris Huynh - https://github.com/chuynh18
 * Dayan Thorne - https://github.com/dayansfo
 * Taharka Taylor - https://github.com/TaharkaT
-* Jerauld Manansala ("Julien") - https://github.com/jerauld  
+* Julien Shim - https://github.com/julienshim
 
 **License**
 
