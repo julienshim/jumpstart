@@ -44,27 +44,27 @@ DB_HOSTNAME=127.0.0.1
 
 Sign-In / Welcome to Jumpstart
 
-<img src="https://github.com/jerauld/jumpstart/blob/master/public/images/signedin.jpg?raw=true" width="580px"/>
+<img src="https://github.com/julienshim/jumpstart/blob/master/public/images/signedin.jpg?raw=true" width="580px"/>
 
 Add Your New Lead
 
-<img src="https://github.com/jerauld/jumpstart/blob/master/public/images/addnewlead.jpg?raw=true" width="580px"/>
+<img src="https://github.com/julienshim/jumpstart/blob/master/public/images/addnewlead.jpg?raw=true" width="580px"/>
 
 My Leads
 
-<img src="https://github.com/jerauld/jumpstart/blob/master/public/images/myleads.jpg?raw=true" width="580px"/>
+<img src="https://github.com/julienshim/jumpstart/blob/master/public/images/myleads.jpg?raw=true" width="580px"/>
 
 Update Lead
 
-<img src="https://github.com/jerauld/jumpstart/blob/master/public/images/updateleaddetails.jpg?raw=true" width="580px"/>
+<img src="https://github.com/julienshim/jumpstart/blob/master/public/images/updateleaddetails.jpg?raw=true" width="580px"/>
 
 Upcoming To Do's
 
-<img src="https://github.com/jerauld/jumpstart/blob/master/public/images/todos.jpg?raw=true" width="580px"/>
+<img src="https://github.com/julienshim/jumpstart/blob/master/public/images/todos.jpg?raw=true" width="580px"/>
 
 Networking / Upcoming Events
 
-<img src="https://github.com/jerauld/jumpstart/blob/master/public/images/networking.jpg?raw=true" width="580px"/>
+<img src="https://github.com/julienshim/jumpstart/blob/master/public/images/networking.jpg?raw=true" width="580px"/>
 
 **Team**
 

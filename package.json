@@ -9,15 +9,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jerauld/jumpstart.git"
+    "url": "git+https://github.com/julienshim/jumpstart.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/jerauld/jumpstart/issues"
+    "url": "https://github.com/julienshim/jumpstart/issues"
   },
-  "homepage": "https://github.com/jerauld/jumpstart#readme",
+  "homepage": "https://github.com/julienshim/jumpstart#readme",
   "dependencies": {
     "body-parser": "^1.18.3",
     "bower": "^1.8.4",
